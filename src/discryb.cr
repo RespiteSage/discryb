@@ -49,4 +49,4 @@ end
 
 Discryb.configure
 
-puts Discryb.get_compliment
+Discryb.run
