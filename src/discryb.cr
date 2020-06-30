@@ -18,8 +18,7 @@ module Discryb
   end
 
   def self.create_client
-    client_id = 727388592770646078u64
-    client = Discord::Client.new(token: self.secret)
+    client = Discord::Client.new(token: "Bot #{self.secret}")
   end
 
   def self.run
