@@ -18,6 +18,7 @@ module Discryb
   end
 
   def self.create_client
+    client_id = 727388592770646078u64
     client = Discord::Client.new(token: self.secret)
   end
 
@@ -26,6 +27,8 @@ module Discryb
 
     client.on_message_create do |payload|
       if payload.content.starts_with? "!compliment"
+        puts "Message: '#{payload.content}'"
+        puts "Invoking a compliment!"
         message = payload.content.split " "
         reply = nil
         if message.size == 1 && message[0] == "!compliment"
@@ -33,17 +36,16 @@ module Discryb
           reply = "@#{user} #{self.get_compliment}"
         elsif message.size == 2
           user = message[1]
-          if client.list_guild_members.includes? user
-            reply = "@#{user} #{self.get_compliment}"
-          else
-            reply = "No user '#{user}' is in this channel! Try complimenting someone who's here."
-          end
+          reply = "#{user}, #{self.get_compliment}"
         end
         if reply
-          client.create_message(payload.channel_id, reply)
+          channel_id = payload.channel_id
+          client.create_message(channel_id, reply)
         end
       end
     end
+
+    client.run
   end
 end
 
