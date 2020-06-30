@@ -2,6 +2,10 @@ require "http"
 require "openssl"
 require "json"
 
+require "discordcr"
+
+require "./configuration"
+
 # TODO: Write documentation for `Discord::Compliment::Bot`
 module Discryb
   VERSION = "0.1.0"
@@ -14,4 +18,8 @@ module Discryb
   end
 end
 
+Discryb.configure
+
 puts Discryb.get_compliment
+
+puts Discryb.secret

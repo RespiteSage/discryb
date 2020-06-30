@@ -4,6 +4,11 @@ version: 0.1.0
 authors:
   - Benjamin Wade <https://github.com/respitesage>
 
+dependencies:
+  discordcr:
+    github: discordcr/discordcr
+    commit: 619e08d31fd10918f2554f7623e2066ac308c439
+
 targets:
   discryb:
     main: src/discryb.cr
