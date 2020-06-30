@@ -3,7 +3,7 @@ require "openssl"
 require "json"
 
 # TODO: Write documentation for `Discord::Compliment::Bot`
-module Compliments
+module Discryb
   VERSION = "0.1.0"
 
   SSL_CONTEXT = OpenSSL::SSL::Context::Client.new
@@ -14,4 +14,4 @@ module Compliments
   end
 end
 
-puts Compliments.get_compliment
+puts Discryb.get_compliment

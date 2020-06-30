@@ -1,12 +1,12 @@
-name: discord-compliment-bot
+name: discryb
 version: 0.1.0
 
 authors:
   - Benjamin Wade <https://github.com/respitesage>
 
 targets:
-  discord-compliment-bot:
-    main: src/discord-compliment-bot.cr
+  discryb:
+    main: src/discryb.cr
 
 crystal: 0.35.1
 
