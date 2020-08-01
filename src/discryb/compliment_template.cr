@@ -3,10 +3,10 @@ require "yaml"
 module Discryb
   class ComplimentTemplate
     getter base_templates : Array(String) = Array(String).new
-    getter secondary_templates : Hash(String, Array(String)) = Hash(String, Array(String)).new
+    getter subtemplates : Hash(String, Array(String)) = Hash(String, Array(String)).new
 
     # TODO
-    def initialize(@base_templates, @secondary_templates)
+    def initialize(@base_templates, @subtemplates)
     end
 
     # TODO
@@ -22,6 +22,24 @@ module Discryb
       templates.delete "compliments"
 
       new base_templates, templates
+    end
+
+    # TODO
+    def valid?
+      subtemplate_keys = subtemplates.keys
+      all_templates = base_templates + subtemplates.values.flatten
+
+      all_templates.each do |template|
+        template.scan /<([^>]+)>/ do |match|
+          match.captures.each do |key|
+            unless key.in? subtemplate_keys
+              return false
+            end
+          end
+        end
+      end
+
+      true
     end
   end
 end
