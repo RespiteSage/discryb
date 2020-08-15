@@ -13,7 +13,15 @@ module Discryb
   SSL_CONTEXT = OpenSSL::SSL::Context::Client.new
 
   def self.get_compliment : String
-    response = HTTP::Client.get "https://complimentr.com/api", tls: SSL_CONTEXT
+    response = nil
+    while response.nil?
+      begin
+        response = HTTP::Client.get "https://complimentr.com/api", tls: SSL_CONTEXT
+      rescue ex
+        puts "Error retrieving compliment from Complimentr: '#{ex.to_s}'"
+      end
+    end
+
     JSON.parse(response.body)["compliment"].to_s
   end
 
