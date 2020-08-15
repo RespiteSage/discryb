@@ -52,7 +52,13 @@ module Discryb
       end
     end
 
-    client.run
+    loop do
+      begin
+        client.run
+      rescue ex
+        puts "Error while running DiscordCr client: '#{ex.to_s}'"
+      end
+    end
   end
 end
 
