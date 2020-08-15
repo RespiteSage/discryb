@@ -1,12 +1,19 @@
 require "yaml"
+require "random"
 
 module Discryb
   class ComplimentTemplate
     getter base_templates : Array(String) = Array(String).new
     getter subtemplates : Hash(String, Array(String)) = Hash(String, Array(String)).new
+    private getter random_state : Random
 
     # TODO
-    def initialize(@base_templates, @subtemplates)
+    def initialize(@base_templates, @subtemplates, seed = nil)
+      if seed
+        @random_state = Random.new seed
+      else
+        @random_state = Random::DEFAULT
+      end
     end
 
     # TODO
@@ -40,6 +47,25 @@ module Discryb
       end
 
       true
+    end
+
+    # TODO
+    def generate_compliment
+      instantiate_template base_templates.sample(1, random_state)
+    end
+
+    def instantiate_template(template : String)
+      until (subtemplate_matches = template.scan /(<([^>]+)>)/).empty?
+        subtemplate_matches.each do |match|
+          subtemplate_tag = match.captures[0]
+          subtemplate_key = match.captures[1]
+
+          subtemplate_value = subtemplates[subtemplate_key].sample(1, random_state)
+
+          template = template.sub subtemplate_tag, subtemplate_value
+        end
+      end
+      template
     end
   end
 end
