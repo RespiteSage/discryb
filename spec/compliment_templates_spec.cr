@@ -125,5 +125,17 @@ describe ComplimentTemplate do
       first_result.should eq "You're so charming!"
       second_result.should eq "Wow, I bet you could touch your nose with your tongue!"
     end
+
+    it "generates a compliment with multiple levels of subtemplate" do
+      base_templates = ["Wow, I bet you could <difficult_action>!"]
+      subtemplates = {"positive_adjective" => ["charming"],
+                      "difficult_action"   => ["cause everyone around you to be <positive_adjective>"]}
+
+      template = ComplimentTemplate.new base_templates, subtemplates, seed: 0
+
+      result = template.generate_compliment
+
+      result.should eq "Wow, I bet you could cause everyone around you to be charming!"
+    end
   end
 end
