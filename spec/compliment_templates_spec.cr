@@ -21,17 +21,17 @@ describe ComplimentTemplate do
                 compliments:
                   - I wish I could be as <adjective> as you!
                   - Are you a <heroic_job>? Because you really saved me from a <disaster>!
-                
+
                 adjective:
                   - disastrous
                   - somber
                   - pulchritudinous
-                
+
                 heroic_job:
                   - firefighter
                   - paramedic
                   - doctor
-                
+
                 disaster:
                   - fire
                   - nuclear meltdown
@@ -63,7 +63,7 @@ describe ComplimentTemplate do
 
     it "returns false for a template with missing subtemplates" do
       base_templates = ["You're so <positive_adjective>!", "Wow, I bet you could <difficult_action>!"]
-      subtemplates = {"positive_adjective" => ["handy", "benevolent"]}
+      subtemplates = {"positive_adjective" => ["handy", "benevolent", "charming", "lovely"]}
 
       result = ComplimentTemplate.new base_templates, subtemplates
 
@@ -73,15 +73,57 @@ describe ComplimentTemplate do
 
   describe "#instantiate_template" do
     it "replaces subtemplate tags with values from those subtemplates" do
-      # TODO
+      base_templates = ["You're so <positive_adjective>!", "Wow, I bet you could <difficult_action>!"]
+      subtemplates = {"positive_adjective" => ["handy", "benevolent", "charming", "lovely"],
+                      "difficult_action"   => ["touch your nose with your tongue", "climb a big wall"]}
+
+      template = ComplimentTemplate.new base_templates, subtemplates, seed: 0
+
+      result = template.instantiate_template base_templates.first
+
+      result.should eq "You're so handy!"
     end
 
     it "uses different values on subsequent calls" do
-      # TODO
+      base_templates = ["You're so <positive_adjective>!", "Wow, I bet you could <difficult_action>!"]
+      subtemplates = {"positive_adjective" => ["handy", "benevolent", "charming", "lovely"],
+                      "difficult_action"   => ["touch your nose with your tongue", "climb a big wall"]}
+
+      template = ComplimentTemplate.new base_templates, subtemplates, seed: 0
+
+      first_result = template.instantiate_template base_templates.first
+      second_result = template.instantiate_template base_templates.first
+
+      first_result.should eq "You're so handy!"
+      second_result.should eq "You're so charming!"
     end
   end
 
   describe "#generate_compliment" do
-    # TODO
+    it "generates a compliment from the templates and subtemplates" do
+      base_templates = ["You're so <positive_adjective>!", "Wow, I bet you could <difficult_action>!"]
+      subtemplates = {"positive_adjective" => ["handy", "benevolent", "charming", "lovely"],
+                      "difficult_action"   => ["touch your nose with your tongue", "climb a big wall"]}
+
+      template = ComplimentTemplate.new base_templates, subtemplates, seed: 0
+
+      result = template.generate_compliment
+
+      result.should eq "You're so charming!"
+    end
+
+    it "uses different values on subsequent calls" do
+      base_templates = ["You're so <positive_adjective>!", "Wow, I bet you could <difficult_action>!"]
+      subtemplates = {"positive_adjective" => ["handy", "benevolent", "charming", "lovely"],
+                      "difficult_action"   => ["touch your nose with your tongue", "climb a big wall"]}
+
+      template = ComplimentTemplate.new base_templates, subtemplates, seed: 0
+
+      first_result = template.generate_compliment
+      second_result = template.generate_compliment
+
+      first_result.should eq "You're so charming!"
+      second_result.should eq "Wow, I bet you could touch your nose with your tongue!"
+    end
   end
 end
