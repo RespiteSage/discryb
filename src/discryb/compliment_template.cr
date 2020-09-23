@@ -51,16 +51,17 @@ module Discryb
 
     # TODO
     def generate_compliment
-      instantiate_template base_templates.sample(1, random_state)
+      instantiate_template base_templates.sample(1, random_state).first
     end
 
     def instantiate_template(template : String)
       until (subtemplate_matches = template.scan /(<([^>]+)>)/).empty?
         subtemplate_matches.each do |match|
-          subtemplate_tag = match.captures[0]
-          subtemplate_key = match.captures[1]
+          # I'm not sure if the .not_nil! here is safe... probably?
+          subtemplate_tag = match.captures[0].not_nil!
+          subtemplate_key = match.captures[1].not_nil!
 
-          subtemplate_value = subtemplates[subtemplate_key].sample(1, random_state)
+          subtemplate_value = subtemplates[subtemplate_key].sample(1, random_state).first
 
           template = template.sub subtemplate_tag, subtemplate_value
         end
