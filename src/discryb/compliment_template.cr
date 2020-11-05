@@ -74,5 +74,31 @@ module Discryb
       end
       template
     end
+
+    # TODO
+    def all_instantiations
+      instantiations = base_templates.clone
+      instantiations.flat_map do |template|
+        template_instantiations template
+      end
+    end
+
+    private def template_instantiations(template : String) : Array(String)
+      instantiations = Array(String).new
+      if (subtemplate_matches = template.scan /(<([^>]+)>)/).empty?
+        instantiations << template
+      else
+        match = subtemplate_matches.first
+        subtemplate_tag = match.captures[0].not_nil!
+        subtemplate_key = match.captures[1].not_nil!
+
+        subtemplate_values = subtemplates[subtemplate_key]
+
+        partial_instantiations = subtemplate_values.map { |value| template.sub subtemplate_tag, value }
+
+        instantiations += partial_instantiations.flat_map { |partial| template_instantiations partial }
+      end
+      instantiations
+    end
   end
 end

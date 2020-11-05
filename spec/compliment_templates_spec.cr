@@ -138,4 +138,41 @@ describe ComplimentTemplate do
       result.should eq "Wow, I bet you could cause everyone around you to be charming!"
     end
   end
+
+  describe "#all_instantiations" do
+    it "generates all compliments from the templates and subtemplates" do
+      base_templates = ["You're so <positive_adjective>!", "Wow, I bet you could <difficult_action>!"]
+      subtemplates = {"positive_adjective" => ["handy", "benevolent", "charming", "lovely"],
+                      "difficult_action"   => ["touch your nose with your tongue", "climb a big wall"]}
+
+      template = ComplimentTemplate.new base_templates, subtemplates, seed: 0
+
+      expected = ["You're so handy!","You're so benevolent!",
+                  "You're so charming!", "You're so lovely!",
+                  "Wow, I bet you could touch your nose with your tongue!",
+                  "Wow, I bet you could climb a big wall!"]
+
+      result = template.all_instantiations
+
+      result.should eq expected
+    end
+
+    it "generates all compliments with multiple levels of subtemplate" do
+      base_templates = ["Wow, I bet you could <difficult_action>!"]
+      subtemplates = {"positive_adjective" => ["charming", "generous"],
+                      "difficult_action"   => ["cause everyone around you to be <positive_adjective>",
+                                               "give everyone a lesson on what it means to be <positive_adjective>"]}
+
+      template = ComplimentTemplate.new base_templates, subtemplates, seed: 0
+
+      expected = ["Wow, I bet you could cause everyone around you to be charming!",
+                  "Wow, I bet you could cause everyone around you to be generous!",
+                  "Wow, I bet you could give everyone a lesson on what it means to be charming!",
+                  "Wow, I bet you could give everyone a lesson on what it means to be generous!"]
+
+      result = template.all_instantiations
+
+      result.should eq expected
+    end
+  end
 end
