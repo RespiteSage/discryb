@@ -2,6 +2,11 @@ require "yaml"
 require "random"
 
 module Discryb
+  # A `ComplimentTemplate` contains templates that are used to form compliment
+  # strings.
+  #
+  # The top-level compliments are in `#base_templates`, and they are instantiated
+  # using the subtemplates and strings in `#subtemplates`.
   class ComplimentTemplate
     getter base_templates : Array(String) = Array(String).new
     getter subtemplates : Hash(String, Array(String)) = Hash(String, Array(String)).new
@@ -54,6 +59,7 @@ module Discryb
       instantiate_template base_templates.sample(1, random_state).first
     end
 
+    # TODO
     def instantiate_template(template : String)
       until (subtemplate_matches = template.scan /(<([^>]+)>)/).empty?
         subtemplate_matches.each do |match|
