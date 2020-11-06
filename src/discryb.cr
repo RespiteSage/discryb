@@ -33,8 +33,8 @@ module Discryb
         if message.size == 1 && message[0] == "!compliment"
           user = payload.author.username
           reply = "@#{user} #{self.get_compliment}"
-        elsif message.size == 2
-          user = message[1]
+        elsif message.size >= 2
+          user = message[1..].join(" ")
           reply = "#{user}, #{self.get_compliment}"
         end
         if reply
