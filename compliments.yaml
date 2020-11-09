@@ -1,0 +1,91 @@
+compliments:
+  - the energy you're putting out is <very_good>!
+  - your aura is a <pretty> <color> today!
+  - I <like> your <very> <cool> <rhymes_with_attitude>.
+
+very_good:
+  - Very Good
+  - great
+  - fantastic
+  - wonderful
+  - bodacious
+  - just swell
+
+pretty:
+  - pretty
+  - lovely
+  - beautiful
+  - glamorous
+  - gorgeous
+  - pulchritudinous
+  - elegant
+  - handsome
+
+color:
+  - red
+  - blue
+  - green
+  - yellow
+  - magenta
+  - purple
+  - violet
+  - crimson
+  - burgundy
+  - scarlet
+  - amber
+  - azure
+  - apricot
+  - chestnut
+  - orange
+  - copper
+  - bronze
+  - platinum
+  - silver
+  - gold
+  - cobalt
+  - emerald
+  - ruby
+  - coral
+  - indigo
+  - lilac
+  - lavender
+  - maroon
+  - mauve
+  - navy
+  - olive
+  - plum
+  - rose
+  - saffron
+  - turquoise
+  - wine
+
+like:
+  - like
+  - dig
+  - appreciate
+  - cherish
+  - esteem
+  - savor
+
+very:
+  - super
+  - totally
+  - heckin'
+  - uber
+
+cool:
+  - cool
+  - chill
+  - rad
+  - slick
+
+rhymes_with_attitude:
+  - attitude
+  - baditude
+  - raditude
+  - catitude
+  - Bratitude(TM)
+  - daditude
+  - dryaditude
+  - naiaditude
+  - wombatitude
