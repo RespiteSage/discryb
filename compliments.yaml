@@ -2,6 +2,10 @@ compliments:
   - the energy you're putting out is <very_good>!
   - your aura is a <pretty> <color> today!
   - I <like> your <very> <cool> <rhymes_with_attitude>.
+  - your sweat is so shiny and beautiful!
+  - I'm <impressed_by> your <big_muscles>!
+  - you're doing a <very_good> job!
+  - your <pretty> <innocuous_body_part> is like <overly_dramatic_noun_phrase>.
 
 very_good:
   - Very Good
@@ -20,6 +24,8 @@ pretty:
   - pulchritudinous
   - elegant
   - handsome
+  - lustrous
+  - incandescent
 
 color:
   - red
@@ -72,6 +78,8 @@ very:
   - totally
   - heckin'
   - uber
+  - exceptionally
+  - absolutely
 
 cool:
   - cool
@@ -89,3 +97,60 @@ rhymes_with_attitude:
   - dryaditude
   - naiaditude
   - wombatitude
+
+impressed_by:
+  - impressed by
+  - blown away by
+  - <very> wowed by
+
+big_muscles:
+  - <bigly_powerful> <muscles>
+  - <very> <bigly_powerful> <muscles>
+  - <very_good> <muscles>
+
+bigly_powerful:
+  - swole
+  - muscular
+  - powerful
+  - huge
+  - steam-powered
+  - diesel-powered
+  - dynamo
+  - hydraulic
+
+muscles:
+  - pecs
+  - delts
+  - lats
+  - quads
+  - calves
+  - biceps
+  - triceps
+  - shins
+  - trapeziuses
+  - hamstrings
+  - abs
+
+innocuous_body_part:
+  - smile
+  - hair
+  - hand
+  - nose
+  - forehead
+  - shoulder
+  - forearm
+  - elbow
+  - knee
+  - armpit
+
+overly_dramatic_noun_phrase:
+  - the final, bright, and destructive sigh of a dying star
+  - raindrops dripping through a forest canopy during summer showers
+  - the sun, faithful in its rising and setting, ever bringing beautiful dawn and
+    dusk in its wake
+  - the ever-changing wonder of the aurora borealis
+  # from The Princess Bride
+  - the sea after a storm
+  - light breaking through the clouds
+  # from The Way of Kings
+  - a mountain stream only three steps from the ice
