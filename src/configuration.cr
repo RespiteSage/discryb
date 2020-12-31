@@ -29,7 +29,12 @@ module Discryb
 
     if self.secret.empty?
       puts "A secret is required to run this bot!"
-      exit 1
+      exit status: 1
+    end
+
+    if !(templates = self.compliments).nil? && !templates.valid?
+      puts "Compliment template is invalid!"
+      exit status: 1
     end
   end
 end
