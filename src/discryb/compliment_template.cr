@@ -12,7 +12,7 @@ module Discryb
     getter subtemplates : Hash(String, Array(String)) = Hash(String, Array(String)).new
     private getter random_state : Random
 
-    # TODO
+    # Creates a new ComplimentTemplate with the given base templates and subtemplates
     def initialize(@base_templates, @subtemplates, seed = nil)
       if seed
         @random_state = Random.new seed
@@ -21,7 +21,7 @@ module Discryb
       end
     end
 
-    # TODO
+    # Creates a new ComplimentTemplate from the given YAML string or IO
     def self.from_yaml(string_or_io : String | IO)
       templates = Hash(String, Array(String)).from_yaml string_or_io
 
@@ -36,7 +36,8 @@ module Discryb
       new base_templates, templates
     end
 
-    # TODO
+    # Returns true if all templates will instantiate into concrete strings,
+    # otherwise returns false
     def valid?
       subtemplate_keys = subtemplates.keys
       all_templates = base_templates + subtemplates.values.flatten
@@ -54,12 +55,13 @@ module Discryb
       true
     end
 
-    # TODO
+    # Randomly generates a compliment from the base templates
     def generate_compliment
       instantiate_template base_templates.sample(1, random_state).first
     end
 
-    # TODO
+    # Randomly turns a compliment template into a concrete string through repeated
+    # substitution
     def instantiate_template(template : String)
       until (subtemplate_matches = template.scan /(<([^>]+)>)/).empty?
         subtemplate_matches.each do |match|
@@ -75,7 +77,7 @@ module Discryb
       template
     end
 
-    # TODO
+    # Outputs all possible instantiations of all base templates
     def all_instantiations
       instantiations = base_templates.clone
       instantiations.flat_map do |template|
