@@ -12,9 +12,17 @@ module Discryb
 
   SSL_CONTEXT = OpenSSL::SSL::Context::Client.new
 
-  def self.get_compliment : String
+  def self.get_complimentr_compliment : String
     response = HTTP::Client.get "https://complimentr.com/api", tls: SSL_CONTEXT
     JSON.parse(response.body)["compliment"].to_s
+  end
+
+  def self.get_compliment : String
+    if (templates = self.compliments).nil?
+      self.get_complimentr_compliment
+    else
+      templates.generate_compliment
+    end
   end
 
   def self.create_client
