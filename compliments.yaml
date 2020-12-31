@@ -6,6 +6,7 @@ compliments:
   - I'm <impressed_by> your <big_muscles>!
   - you're doing a <very_good> job!
   - your <pretty> <innocuous_body_part> is like <overly_dramatic_noun_phrase>.
+  - the ancient scrolls have told of your <told_by_ancient_scrolls>.
 
 very_good:
   - Very Good
@@ -80,6 +81,7 @@ very:
   - uber
   - exceptionally
   - absolutely
+  - incredibly
 
 cool:
   - cool
@@ -154,3 +156,7 @@ overly_dramatic_noun_phrase:
   - light breaking through the clouds
   # from The Way of Kings
   - a mountain stream only three steps from the ice
+
+told_by_ancient_scrolls:
+  - <big_muscles>
+  - <pretty> <color> <innocuous_body_part>
