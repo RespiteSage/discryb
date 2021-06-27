@@ -1,2 +1,4 @@
 require "spec"
-require "../src/discryb"
+require "../src/discryb/*"
+
+include Discryb

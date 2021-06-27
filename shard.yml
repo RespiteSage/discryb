@@ -1,5 +1,5 @@
 name: discryb
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Benjamin Wade <https://github.com/respitesage>
@@ -12,6 +12,8 @@ dependencies:
 targets:
   discryb:
     main: src/discryb.cr
+  instantiate_compliments:
+    main: spec/all_combos.cr
 
 crystal: 0.35.1
 

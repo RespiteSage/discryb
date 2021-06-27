@@ -12,7 +12,7 @@ module Discryb
 
   SSL_CONTEXT = OpenSSL::SSL::Context::Client.new
 
-  def self.get_compliment : String
+  def self.get_complimentr_compliment : String
     response = nil
     while response.nil?
       begin
@@ -24,6 +24,15 @@ module Discryb
 
     JSON.parse(response.body)["compliment"].to_s
   end
+
+  def self.get_compliment : String
+    if (templates = self.compliments).nil?
+      self.get_complimentr_compliment
+    else
+      templates.generate_compliment
+    end
+  end
+
 
   def self.create_client
     client = Discord::Client.new(token: "Bot #{self.secret}")
