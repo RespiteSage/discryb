@@ -6,6 +6,7 @@ compliments:
   - you're doing a <very_good> job!
   - your <pretty> <innocuous_body_part> is like <overly_dramatic_noun_phrase>.
   - the ancient scrolls have told of your <told_by_ancient_scrolls>.
+  - did you <come_from_good_place>, or are you not <a_wonderful_being>?
 
 very_good:
   - Very Good
@@ -159,3 +160,14 @@ overly_dramatic_noun_phrase:
 told_by_ancient_scrolls:
   - <big_muscles>
   - <pretty> <color> <innocuous_body_part>
+
+come_from_good_place:
+  - fall from heaven
+  - emerge fully formed from the sea foam
+  - descend from Mount Olympos
+
+a_wonderful_being:
+  - an angel
+  - Aphrodite in human form
+  - Venus in human form
+  - one of the fabled muses
