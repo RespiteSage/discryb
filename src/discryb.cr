@@ -13,7 +13,15 @@ module Discryb
   SSL_CONTEXT = OpenSSL::SSL::Context::Client.new
 
   def self.get_complimentr_compliment : String
-    response = HTTP::Client.get "https://complimentr.com/api", tls: SSL_CONTEXT
+    response = nil
+    while response.nil?
+      begin
+        response = HTTP::Client.get "https://complimentr.com/api", tls: SSL_CONTEXT
+      rescue ex
+        puts "Error retrieving compliment from Complimentr: '#{ex.to_s}'"
+      end
+    end
+
     JSON.parse(response.body)["compliment"].to_s
   end
 
@@ -24,6 +32,7 @@ module Discryb
       templates.generate_compliment
     end
   end
+
 
   def self.create_client
     client = Discord::Client.new(token: "Bot #{self.secret}")
@@ -52,7 +61,13 @@ module Discryb
       end
     end
 
-    client.run
+    loop do
+      begin
+        client.run
+      rescue ex
+        puts "Error while running DiscordCr client: '#{ex.to_s}'"
+      end
+    end
   end
 end
 
