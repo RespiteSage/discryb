@@ -1,6 +1,6 @@
 version: 2.0
 shards:
   discordcr:
-    git: https://github.com/discordcr/discordcr.git
-    version: 0.4.0+git.commit.619e08d31fd10918f2554f7623e2066ac308c439
+    git: https://github.com/shardlab/discordcr.git
+    version: 0.4.0+git.commit.d9643cdf7e91f723a80673b0c12071df17938fae
 

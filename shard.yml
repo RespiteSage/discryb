@@ -6,8 +6,8 @@ authors:
 
 dependencies:
   discordcr:
-    github: discordcr/discordcr
-    commit: 619e08d31fd10918f2554f7623e2066ac308c439
+    github: shardlab/discordcr
+    tag: v0.4.1
 
 targets:
   discryb:
