@@ -6,8 +6,8 @@ authors:
 
 dependencies:
   discordcr:
-    github: discordcr/discordcr
-    commit: 619e08d31fd10918f2554f7623e2066ac308c439
+    github: shardlab/discordcr
+    tag: v0.4.1
 
 targets:
   discryb:
@@ -15,6 +15,6 @@ targets:
   instantiate_compliments:
     main: spec/all_combos.cr
 
-crystal: 0.35.1
+crystal: 1.2.2
 
 license: MIT
