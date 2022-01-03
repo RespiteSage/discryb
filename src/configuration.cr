@@ -8,14 +8,14 @@ module Discryb
 
   def self.configure
     OptionParser.parse do |parser|
-      parser.banner = "Usage: discryb -s [secret]"
+      parser.banner = "Usage: discryb -s SECRET [ -c COMPLIMENT_TEMPLATE ]"
       parser.separator
 
-      parser.on "-s [secret]", "Secret to use as a Discord bot" do |secret|
+      parser.on "-s SECRET", "Secret to use as a Discord bot" do |secret|
         self.secret = secret
       end
 
-      parser.on "-c [YAML file]", "YAML file containing a compliment template" do |filename|
+      parser.on "-c COMPLIMENT_TEMPLATE", "YAML file containing a compliment template" do |filename|
         File.open filename do |file|
           self.compliments = ComplimentTemplate.from_yaml file
         end
