@@ -15,6 +15,6 @@ targets:
   instantiate_compliments:
     main: spec/all_combos.cr
 
-crystal: 0.35.1
+crystal: 1.2.2
 
 license: MIT
